@@ -1,0 +1,30 @@
+{
+  "name": "tailwind-carousel",
+  "version": "1.0.1",
+  "description": "this library makes easy to add carousel in project where tailwind is already in use",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshendra1998/tailwind-carousel.git"
+  },
+  "keywords": [
+    "carousel",
+    "slider",
+    "image",
+    "animation"
+  ],
+  "author": "Harshendra Prajapati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/harshendra1998/tailwind-carousel/issues"
+  },
+  "homepage": "https://github.com/harshendra1998/tailwind-carousel#readme",
+  "dependencies": {
+    "react-swipeable": "^6.2.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
