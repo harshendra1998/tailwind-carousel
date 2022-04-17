@@ -26,9 +26,9 @@ export default function Carousel(props) {
   });
 
   const Arrow = ({ classStyles, func, hideArrowForMobile, timespace }) => <div
-    className={`top-1/2 -translate-y-1/2 absolute pr-4 pl-1 block transition-all duration-100 full-rounded ${hideArrowForMobile && 'hidden'} sm:block ${timespace ? 'opacity-30 hover:opacity-40' : 'opacity-50 hover:opacity-70'} ${classStyles}`} onClick={() => func()}>
+    className={`top-1by2 -translate-y-1by2 absolute pr-4 pl-1 block transition-all duration-100 full-rounded ${hideArrowForMobile && 'hidden'} sm-block ${timespace ? 'opacity-30 hover:opacity-40' : 'opacity-50 hover:opacity-70'} ${classStyles}`} onClick={() => func()}>
     <img
-      className={`w-8 py-0.5 pr-1 ${timespace ? 'bg-gray-800' : 'bg-none'} rounded-full`}
+      className={`w-8 py-0point5 pr-1 ${timespace ? 'bg-gray-800' : 'bg-none'} rounded-full`}
       src={ssvg}
       alt="Arrow Icon"
     />
@@ -38,7 +38,7 @@ export default function Carousel(props) {
 
   return (
     <div
-      className={`flex bg-trans focus:outline-none flex-1 justify-center align-center relative overflow-hidden ${props.styleClass}`}
+      className={`flex bg-trans outline-none flex-1 justify-center align-center relative overflow-hidden ${props.styleClass}`}
     >
       <div className='absolute inset-0 flex flex-1 justify-center align-center'>
         <div

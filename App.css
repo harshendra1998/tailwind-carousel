@@ -1,3 +1,195 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.top-1by2 {
+    top: 50%;
+}
+
+.-translate-y-1by2 {
+    --tw-translate-y: -50%;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.pr-4 {
+    padding-right: 1rem;
+}
+
+.pl-1 {
+    padding-left: 0.25rem;
+}
+
+.block {
+    display: block;
+}
+
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.hidden {
+    display: none;
+}
+
+.opacity-30 {
+    opacity: 0.3;
+}
+
+.opacity-30:hover {
+    opacity: 0.4;
+}
+
+.opacity-50 {
+    opacity: 0.5;
+}
+
+.opacity-50:hover {
+    opacity: 0.7;
+}
+
+.w-8 {
+    width: 2rem;
+}
+
+.py-0point5 {
+    padding-top: 0.125rem;
+    padding-bottom: 0.125rem;
+}
+
+.pr-1 {
+    padding-right: 0.25rem;
+}
+
+.bg-gray-800 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(31, 41, 55, var(--tw-bg-opacity));
+}
+
+.bg-none {
+    background-image: none;
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+.left-0 {
+    left: 0px;
+}
+
+.right-0 {
+    right: 0px;
+}
+
+.rotate-180 {
+    --tw-rotate: 180deg;
+}
+
+.flex {
+    display: flex;
+}
+
+.bg-trans {
+    background-color: transparent;
+}
+
+.outline-none:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-self: center;
+}
+
+.relative {
+    position: relative;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.inset-0 {
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.duration-500 {
+    transition-duration: 500ms;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.bg-black20 {
+    --tw-bg-opacity: 0.2;
+    background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
+}
+
+.bg-no-repeat {
+    background-repeat: no-repeat;
+}
+
+.bg-cover {
+    background-size: cover;
+}
+
+.bg-contain {
+    background-size: contain;
+}
+
+.bg-center {
+    background-position: center;
+}
+
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.bottom-0 {
+    bottom: 0px;
+}
+
+.h-2 {
+    height: 0.5rem;
+}
+
+.w-2 {
+    width: 0.5rem;
+}
+
+.bg-gray-50 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
+}
+
+.opacity-90 {
+    opacity: 0.9;
+}
+
+.opacity-40 {
+    opacity: 0.4;
+}
+
+@media (min-width:640px) {
+    .sm-block {
+        display: block;
+    }
+}
