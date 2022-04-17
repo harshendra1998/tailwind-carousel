@@ -26,7 +26,7 @@ export default function Carousel(props) {
   });
 
   const Arrow = ({ classStyles, func, hideArrowForMobile, timespace }) => <div
-    className={`top-1by2 -translate-y-1by2 absolute pr-4 pl-1 block transition-all duration-100 full-rounded ${hideArrowForMobile && 'hidden'} sm-block ${timespace ? 'opacity-30 hover:opacity-40' : 'opacity-50 hover:opacity-70'} ${classStyles}`} onClick={() => func()}>
+    className={`top-1by2 -translate-y-minus1by2 absolute pr-4 pl-1 block transition-all duration-100 full-rounded ${hideArrowForMobile && 'hidden'} sm-block ${timespace ? 'opacity-30 hover:opacity-40' : 'opacity-50 hover:opacity-70'} ${classStyles}`} onClick={() => func()}>
     <img
       className={`w-8 py-0point5 pr-1 ${timespace ? 'bg-gray-800' : 'bg-none'} rounded-full`}
       src={ssvg}
@@ -56,7 +56,7 @@ export default function Carousel(props) {
         <div className="h-4 absolute flex gap-2 bottom-0">
           {props.pageIndicator && props.images.length > 1 && props.images.map((img, index) => (
             <div
-              className={`h-2 w-2 bg-gray-50 rounded-full ${index + mode == 0 ? "opacity-90" : "opacity-40"} transition-all duration-200`}
+              className={`h-2 w-2 bg-gray-50 rounded-full mb-2 ${index + mode == 0 ? "opacity-90" : "opacity-40"} transition-all duration-200`}
               onClick={() => setMode(-index)}
             />
           ))}

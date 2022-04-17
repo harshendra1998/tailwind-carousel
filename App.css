@@ -2,7 +2,7 @@
     top: 50%;
 }
 
-.-translate-y-1by2 {
+.translate-y-minus1by2 {
     --tw-translate-y: -50%;
 }
 
@@ -186,6 +186,9 @@
 
 .opacity-40 {
     opacity: 0.4;
+}
+.mb-2{
+    margin-bottom: 0.5rem;
 }
 
 @media (min-width:640px) {
