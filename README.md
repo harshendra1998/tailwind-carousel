@@ -16,6 +16,7 @@ function App() {
   ....
   <TailwindCarousel
           styleClass={`my-3 mx-auto w-2/3 h-64 rounded-md `}      // tailwind class styles
+          style={{height: '250px', width: '75%' }} // height and width can also be passed as style prop or as styleClass
           timespace={2500}      // time for each slide image in milli second
           carusal_cover={true}       // carousal image cover whole size (true) or contain inside (false)
           arrowVisible={true}      // Arrows on left and right visible ?
@@ -30,6 +31,8 @@ function App() {
 }
 ```
 
+## Demo
+https://codesandbox.io/s/tailwind-carousel-46713p
 
 ## Screenshots
 

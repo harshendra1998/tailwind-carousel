@@ -39,7 +39,7 @@ export default function Carousel(props) {
   return (
     <div
       className={`flex bg-trans outline-none flex-1 justify-center align-center relative overflow-hidden ${props.styleClass}`}
-      style={props.styel}
+      style={props.style}
     >
       <div className='absolute inset-0 flex flex-1 justify-center align-center'>
         <div
