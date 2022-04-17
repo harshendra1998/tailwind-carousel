@@ -2,8 +2,8 @@
     top: 50%;
 }
 
-.translate-y-minus1by2 {
-    transform: translateY(-50%);
+.translate-y {
+    transform: translate(0%, -50%);
 }
 
 .absolute {
