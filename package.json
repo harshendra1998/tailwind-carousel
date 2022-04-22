@@ -1,6 +1,6 @@
 {
   "name": "tailwind-carousel",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "this library makes easy to add carousel in project where tailwind is already in use",
   "main": "index.js",
   "scripts": {
