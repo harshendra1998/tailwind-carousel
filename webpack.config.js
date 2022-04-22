@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './index.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve('dist'),
     filename: 'index.js',
@@ -11,13 +11,29 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.(js|jsx)?$/,
         exclude: /(node_modules)/,
         use: 'babel-loader',
       },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules)/,
+        use: 'css-loader',
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'svg-url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ]
+    }
     ],
   },
-  resolve: {
-    extensions: ['.js'],
-  },
+  externals: {
+      react: "react"
+  }
 };
