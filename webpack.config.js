@@ -27,10 +27,10 @@ module.exports = {
         test: /\.svg$/,
         use: [
           {
-            loader: 'svg-url-loader',
+            loader: 'react-svg-loader',
             options: {
-              limit: 10000,
-            },
+              jsx: true // true outputs JSX tags
+            }
           },
         ]
     }
