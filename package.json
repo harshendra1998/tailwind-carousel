@@ -3,8 +3,7 @@
   "version": "1.0.19",
   "babel": {
     "presets": [
-      "@babel/preset-react",
-      "@babel/preset-env"
+      "@babel/preset-react"
     ]
   },
   "description": "this library makes easy to add carousel in project where tailwind is already in use",
