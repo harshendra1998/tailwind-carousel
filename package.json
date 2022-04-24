@@ -1,12 +1,6 @@
 {
   "name": "tailwind-carousel",
   "version": "1.0.20",
-  "babel": {
-    "presets": [
-      "@babel/preset-react",
-      "@babel/preset-env"
-    ]
-  },
   "description": "this library makes easy to add carousel in project where tailwind is already in use",
   "main": "./src/index.js",
   "scripts": {
