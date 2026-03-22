@@ -4,36 +4,24 @@ module.exports = {
   mode: 'production',
   entry: './src/index.js',
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
     libraryTarget: 'commonjs2',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules)/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env',
-                    '@babel/react', {
-                      'plugins': ['@babel/plugin-proposal-class-properties']}]}
       },
-      {
-        test: /\.css$/,
-        exclude: /(node_modules)/,
-        loader: 'css-loader',
-      },
-      {
-        test: /\.svg$/,
-        use: [
-          '@svgr/webpack',
-          'url-loader'
-        ]
-    }
     ],
   },
   externals: {
-      react: "react"
-  }
+    react: 'commonjs react',
+    'react-dom': 'commonjs react-dom',
+  },
 };

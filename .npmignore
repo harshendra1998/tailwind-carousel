@@ -1,2 +1,6 @@
 webpack.config.js
 .babelrc
+src/App.css
+src/arrow.svg
+test.html
+*.log

@@ -1,49 +1,104 @@
+# Tailwind Carousel
 
-# Tailwind-carousel
+A lightweight, dependency-free carousel component for React and Next.js projects.
 
-Easiest way to add carousel in you react js, next js with Tailwind project.
+## Installation
 
+```bash
+npm install tailwind-carousel
+```
 
+## Features
 
+- Lightweight (~6KB)
+- No Tailwind dependency required
+- Auto-play support
+- Navigation arrows
+- Dot indicators
+- Mobile responsive
+- Touch swipe support
+- Customizable styling
 
-## Usage/Examples
+## Usage
 
-```javascript
+```jsx
 import TailwindCarousel from 'tailwind-carousel';
 
 function App() {
-  return <body >
-  ....
-  <TailwindCarousel
-          styleClass={`my-3 mx-auto w-2/3 h-64 rounded-md `}      // tailwind class styles
-          style={{height: '250px', width: '75%' }} // height and width can also be passed as style prop or as styleClass
-          timespace={2500}      // time for each slide image in milli second
-          carusal_cover={true}       // carousal image cover whole size (true) or contain inside (false)
-          arrowVisible={true}      // Arrows on left and right visible ?
-          hideArrowForMobile={true}      // Hide Arrows for mobile screens if arrowVisible is true ?
-          pageIndicator={true}       //page number indicators at bootom as dots visible ?
-          images={['https://example.com/image1.jpg',
-          'https://example.com/image2.jpg',
-          'https://example.com/image3.jpg']}       // images for carousal in Array format
-        />
-        .......
-  </body>
+  const images = [
+    'https://example.com/image1.jpg',
+    'https://example.com/image2.jpg',
+    'https://example.com/image3.jpg',
+  ];
+
+  return (
+    <TailwindCarousel
+      images={images}
+      width="600px"
+      height="400px"
+      carusal_cover={true}
+      arrowVisible={true}
+      pageIndicator={true}
+    />
+  );
 }
 ```
 
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `images` | `string[]` | **required** | Array of image URLs |
+| `width` | `string` | `'100%'` | Carousel width (e.g., '600px', '80%') |
+| `height` | `string` | `'300px'` | Carousel height (e.g., '400px') |
+| `carusal_cover` | `boolean` | `true` | Image covers area (`cover`) or fits inside (`contain`) |
+| `arrowVisible` | `boolean` | `false` | Show navigation arrows |
+| `hideArrowForMobile` | `boolean` | `false` | Hide arrows on mobile screens |
+| `pageIndicator` | `boolean` | `false` | Show dot indicators |
+| `timespace` | `number` | - | Auto-play interval in milliseconds |
+| `style` | `object` | - | Additional inline styles for container |
+
+## Examples
+
+### Basic Carousel
+```jsx
+<TailwindCarousel
+  images={images}
+  width="600px"
+  height="300px"
+/>
+```
+
+### With All Options
+```jsx
+<TailwindCarousel
+  images={images}
+  width="80%"
+  height="400px"
+  carusal_cover={true}
+  arrowVisible={true}
+  hideArrowForMobile={true}
+  pageIndicator={true}
+  timespace={2000}
+/>
+```
+
+### Auto-play Only
+```jsx
+<TailwindCarousel
+  images={images}
+  width="600px"
+  height="300px"
+  arrowVisible={false}
+  pageIndicator={false}
+  timespace={1500}
+/>
+```
+
 ## Demo
+
 https://codesandbox.io/s/tailwind-carousel-46713p
 
-## Screenshots
+## Author
 
-![App Screenshot](https://blogger.googleusercontent.com/img/a/AVvXsEihx_TX_y_LFXtV8weuCbOgSH6Uy8g8Z3IIffeYX2wb_bKp35XqNNuNV6MzYhl30JkiAJLD7t_hR8cENoNLNDzYnKx9cBxaG8MR1XzFExs2zB72D6UM5vldqNWpPJIwij4D-XjrLHqbjkBHIflIa2erNyREOV2fI7PsH6oXGw1NmBIugTLfra5O_LcR=w557-h148)
-
-
-## Authors
-
-- [@harshendra1998](https://www.github.com/harshendra1998)
-
-
-## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://harshendra.web.app/)
-
+[@harshendra1998](https://www.github.com/harshendra1998)

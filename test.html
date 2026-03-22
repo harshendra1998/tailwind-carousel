@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel Test</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f0f0f0; }
+    h1 { text-align: center; margin-bottom: 40px; }
+    h2 { text-align: center; margin: 40px 0 10px; }
+    
+    .tc-container { display: flex !important; justify-content: center !important; align-items: center !important; position: relative !important; overflow: hidden !important; background: #ddd; }
+    .tc-slide-wrapper { position: absolute !important; top: 0 !important; right: 0 !important; bottom: 0 !important; left: 0 !important; display: flex !important; justify-content: center !important; align-items: center !important; }
+    .tc-slides { position: absolute !important; height: 100% !important; width: 100% !important; display: flex !important; transition: left 0.5s !important; }
+    .tc-slide { height: 100% !important; width: 100% !important; background-repeat: no-repeat !important; background-position: center !important; }
+    .tc-dots { position: absolute !important; bottom: 10px !important; display: flex !important; gap: 8px !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 10 !important; }
+    .tc-dot { width: 10px !important; height: 10px !important; border-radius: 50% !important; background-color: white !important; border: none !important; cursor: pointer !important; transition: opacity 0.2s !important; box-sizing: border-box !important; padding: 0 !important; }
+    .tc-arrow { background: rgba(0,0,0,0.3) !important; border: none !important; cursor: pointer !important; position: absolute !important; top: 50% !important; transform: translateY(-50%) !important; width: 40px !important; height: 40px !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; padding: 0 !important; z-index: 10 !important; }
+    .tc-arrow-prev { left: 15px !important; }
+    .tc-arrow-next { right: 15px !important; }
+    .tc-arrow svg { display: block !important; }
+    @media (max-width: 640px) { .tc-arrow-hide-mobile { display: none !important; } }
+  </style>
+</head>
+<body>
+  <h1>Tailwind Carousel Test</h1>
+  
+  <h2>Basic Carousel</h2>
+  <div id="basic"></div>
+
+  <h2>With All Options</h2>
+  <div id="full"></div>
+
+  <script>
+    const { useState, useEffect, useCallback, useRef, createElement } = React;
+
+    function Carousel(props) {
+      const [mode, setMode] = useState(0);
+      const totalSlides = props.images.length;
+      const timerRef = useRef(null);
+
+      const next = useCallback(() => {
+        setMode((prev) => (prev + 1) % totalSlides);
+      }, [totalSlides]);
+
+      const prev = useCallback(() => {
+        setMode((prev) => (prev - 1 + totalSlides) % totalSlides);
+      }, [totalSlides]);
+
+      useEffect(() => {
+        if (totalSlides > 1 && props.timespace) {
+          timerRef.current = setInterval(next, props.timespace);
+          return () => {
+            if (timerRef.current) clearInterval(timerRef.current);
+          };
+        }
+      }, [totalSlides, props.timespace, next]);
+
+      if (totalSlides === 0) return null;
+
+      const containerStyle = {
+        width: props.width || '100%',
+        height: props.height || '300px',
+      };
+
+      const arrowOpacity = props.timespace ? 0.3 : 0.5;
+      const arrowClass = props.hideArrowForMobile ? 'tc-arrow tc-arrow-hide-mobile' : 'tc-arrow';
+
+      return createElement('div', { className: 'tc-container', style: containerStyle },
+        createElement('div', { className: 'tc-slide-wrapper' },
+          createElement('div', { className: 'tc-slides', style: { width: totalSlides * 100 + '%', left: mode * 100 + '%' } },
+            props.images.map((img, i) =>
+              createElement('div', {
+                key: i,
+                className: 'tc-slide',
+                style: {
+                  width: (100 / totalSlides) + '%',
+                  backgroundImage: 'url(' + img + ')',
+                  backgroundSize: props.carusal_cover !== false ? 'cover' : 'contain',
+                }
+              })
+            )
+          ),
+          props.pageIndicator && totalSlides > 1 && createElement('div', { className: 'tc-dots' },
+            props.images.map((_, i) =>
+              createElement('button', {
+                key: i,
+                className: 'tc-dot',
+                onClick: () => setMode(i),
+                style: { opacity: i === mode ? 1 : 0.4 }
+              })
+            )
+          ),
+          props.arrowVisible && totalSlides > 1 && [
+            createElement('button', {
+              key: 'prev',
+              type: 'button',
+              className: arrowClass + ' tc-arrow-prev',
+              onClick: prev,
+              style: { opacity: arrowOpacity }
+            }, createElement('svg', { width: '20', height: '20', viewBox: '0 0 16 16', fill: 'white' }, createElement('path', { d: 'M11.06 1.44C10.48 0.85 9.52 0.85 8.94 1.44C8.39 1.99 3.99 6.39 3.44 6.94C2.85 7.52 2.85 8.48 3.44 9.06C3.99 9.61 8.39 14.01 8.94 14.56C9.52 15.15 10.48 15.15 11.06 14.56C11.65 13.97 11.65 13.02 11.06 12.43C10.77 12.14 9.29 10.66 6.63 8L11.06 3.57C11.45 2.54 11.45 1.83 11.06 1.44Z' }))),
+            createElement('button', {
+              key: 'next',
+              type: 'button',
+              className: arrowClass + ' tc-arrow-next',
+              onClick: next,
+              style: { opacity: arrowOpacity }
+            }, createElement('svg', { width: '20', height: '20', viewBox: '0 0 16 16', fill: 'white', style: { transform: 'rotate(180deg)' } }, createElement('path', { d: 'M11.06 1.44C10.48 0.85 9.52 0.85 8.94 1.44C8.39 1.99 3.99 6.39 3.44 6.94C2.85 7.52 2.85 8.48 3.44 9.06C3.99 9.61 8.39 14.01 8.94 14.56C9.52 15.15 10.48 15.15 11.06 14.56C11.65 13.97 11.65 13.02 11.06 12.43C10.77 12.14 9.29 10.66 6.63 8L11.06 3.57C11.45 2.54 11.45 1.83 11.06 1.44Z' })))
+          ]
+        )
+      );
+    }
+    
+    const image = 'https://static.vecteezy.com/system/resources/thumbnails/060/843/811/small/close-up-of-raindrops-on-leaves-hd-background-luxury-hd-wallpaper-image-trendy-background-illustration-free-photo.jpg';
+    const images = [image, image, image, image];
+
+    const root = ReactDOM.createRoot(document.getElementById('basic'));
+    root.render(createElement(Carousel, {
+      images: images,
+      width: '600px',
+      height: '300px'
+    }));
+
+    const root2 = ReactDOM.createRoot(document.getElementById('full'));
+    root2.render(createElement(Carousel, {
+      images: images,
+      width: '700px',
+      height: '400px',
+      carusal_cover: true,
+      arrowVisible: true,
+      hideArrowForMobile: true,
+      pageIndicator: true,
+      timespace: 2000
+    }));
+  </script>
+</body>
+</html>
